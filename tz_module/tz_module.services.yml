@@ -1,4 +1,4 @@
 services:
   tz_module.stats:
     class: Drupal\tz_module\NodeStats
-    arguments: ['@database', '@request_stack']
+    arguments: ['@database']

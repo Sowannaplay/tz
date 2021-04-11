@@ -3,6 +3,7 @@
 namespace Drupal\tz_module\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\tz_module\NodeStatsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -58,21 +59,15 @@ class StatBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function build() {
-    $nid = $this->requestStack->getCurrentRequest()->get('node')->id();
-    $statistics_array = $this->nodeStats->getStatistics($nid);
-    $total = $statistics_array->totalcount;
-    $daily = $statistics_array->daycount;
-    $last_user = $statistics_array->last_user;
-    $time = date('d.m.yy H:m', $statistics_array->timestamp);
-    return ['#markup' => "Total views: $total, Daily views: $daily </br> Last viewed by: $last_user at $time"];
-
+    $build['#markup'] = '<div class=statistics_information_block></div>';
+    $build['#attached']['library'][] = 'tz_module/build_block';
+    $settings = ['data' => ['nid' => $this->requestStack->getCurrentRequest()->get('node')->id()], 'url' => '/build_block'];
+    $build['#attached']['drupalSettings']['statistic_block_info'] = $settings;
+    return $build;
   }
 
-  /**
-   * Disables caching.
-   */
-  public function getCacheMaxAge() {
-    return 0;
+  public function getCacheContexts() {
+    return Cache::mergeContexts(parent::getCacheContexts(), array('url'));
   }
 
 }

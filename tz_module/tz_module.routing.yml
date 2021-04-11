@@ -14,3 +14,20 @@ tz_module.articles_manage:
   requirements:
     _permission: 'administer nodes'
 
+tz_module.invokeStatistics:
+  path: '/invoke_stats'
+  defaults:
+    _controller: '\Drupal\tz_module\Controller\StatisticController:invokeViewRecord'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+tz_module.build_block:
+  path: '/build_block'
+  defaults:
+    _controller: '\Drupal\tz_module\Controller\StatisticController:statisticBlockContent'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'

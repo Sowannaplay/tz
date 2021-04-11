@@ -10,6 +10,8 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class SiteNameForm extends FormBase {
 
+  protected const NUMBER_OF_SYMBOLS_REQUIRED = 6;
+
   /**
    * {@inheritdoc}
    */
@@ -40,7 +42,7 @@ class SiteNameForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $name = $form_state->getValue('site_name');
-    if (strlen($name) < 6) {
+    if (strlen($name) < static::NUMBER_OF_SYMBOLS_REQUIRED) {
       $form_state->setError($form['site_name'], $this->t('Site name should consist more than 6 symbols'));
     }
   }

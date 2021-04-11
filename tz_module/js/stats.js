@@ -1,5 +1,5 @@
 /**
-* Statistics js.
+* Statistic ajax request.
 **/
 
 (function ($, Drupal, drupalSettings) {

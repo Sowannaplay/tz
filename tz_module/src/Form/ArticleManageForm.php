@@ -123,11 +123,9 @@ class ArticleManageForm extends FormBase {
       return;
     }
     $article->set('status', $article_status);
+    $article->setSticky(FALSE);
     if ($form_state->getValue('sticky') === '0') {
       $article->setSticky(TRUE);
-    }
-    else {
-      $article->setSticky(FALSE);
     }
     try {
       $article->save();

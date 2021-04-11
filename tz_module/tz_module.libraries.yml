@@ -6,3 +6,12 @@ stats:
     - core/jquery
     - core/drupal
     - core/drupalSettings
+
+build_block:
+  version: VERSION
+  js:
+    js/forming_block.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

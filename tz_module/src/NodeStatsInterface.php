@@ -15,11 +15,15 @@ interface NodeStatsInterface {
    *
    * @param int $id
    *   The ID of the entity to count.
+   * @param string $user
+   *   Username of current user.
+   * @param int $time
+   *   Timestamp.
    *
    * @return bool
    *   TRUE if the entity view has been counted.
    */
-  public function recordView($id, $user);
+  public function recordView($id, $user, $time);
 
   /**
    * Returns full statistics/
