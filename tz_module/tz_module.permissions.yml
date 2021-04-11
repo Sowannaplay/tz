@@ -1,0 +1,3 @@
+'administer mymodule':
+  title: 'Site name change'
+  description: 'Gives opportunity to change site name through form.'

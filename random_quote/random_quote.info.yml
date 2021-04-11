@@ -1,0 +1,7 @@
+name: 'Random quote'
+type: module
+description: 'Random quote module'
+core_version_requirement: ^8 || ^9
+package: 'Tz'
+dependencies:
+  - drupal:system

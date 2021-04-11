@@ -1,0 +1,7 @@
+name: 'Tz module'
+type: module
+description: 'Module created for tz'
+core_version_requirement: ^8 || ^9
+package: 'Tz'
+dependencies:
+  - drupal:system

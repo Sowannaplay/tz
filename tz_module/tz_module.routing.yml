@@ -1,0 +1,16 @@
+tz_module.site_name_setting:
+    path: '/custom-site-settings'
+    defaults:
+      _form: '\Drupal\tz_module\Form\SiteNameForm'
+      _title: 'Site name'
+    requirements:
+      _permission: 'administer mymodule'
+
+tz_module.articles_manage:
+  path: '/publish_control'
+  defaults:
+    _form: '\Drupal\tz_module\Form\ArticleManageForm'
+    _title: 'Article Manage form'
+  requirements:
+    _permission: 'administer nodes'
+

@@ -1,0 +1,15 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for node entities.
+ */
+function tz_module_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if (!$node->isNew() && $view_mode == 'full' && node_is_page($node) && empty($node->in_preview)) {
+    $build['#attached']['library'][] = 'tz_module/stats';
+    $settings = ['data' => ['nid' => $node->id(), 'user' => \Drupal::currentUser()->getAccountName()], 'url' => \Drupal::request()->getBasePath() . '/' . drupal_get_path('module', 'tz_module') . '/stat.php'];
+    $build['#attached']['drupalSettings']['statistics'] = $settings;
+  }
+}

@@ -1,0 +1,20 @@
+uuid: e6e03dff-0954-4189-be78-ac9e36dd7dc8
+langcode: en
+status: true
+dependencies:
+  module:
+    - tz_module
+  theme:
+    - bartik
+id: statisicsblock
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: tz_module_stat_block
+settings:
+  id: tz_module_stat_block
+  label: 'Statisics block'
+  provider: tz_module
+  label_display: visible
+visibility: {  }
